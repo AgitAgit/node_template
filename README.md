@@ -11,11 +11,13 @@ A basic Node.js/Express server template with essential middleware and security c
 - Environment variable support
 - Error handling middleware
 - Development hot-reload (nodemon)
+- AWS Lambda deployment support
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - npm or yarn
+- AWS CLI configured with appropriate credentials
 
 ## Setup
 
@@ -37,6 +39,8 @@ A basic Node.js/Express server template with essential middleware and security c
 
 ## Running the Server
 
+### Local Development
+
 Development mode (with hot-reload):
 ```bash
 npm run dev
@@ -57,19 +61,20 @@ yarn start
 
 The server will start on port 3000 by default (or the port specified in your .env file).
 
+### AWS Lambda Development Server
+
+The application is deployed to AWS Lambda with the following endpoint:
+
+Function details:
+- Function name: node-express-template-dev-api
+- Size: 1.2 MB
+
 ## API Endpoints
 
 - `GET /`: Welcome message
 
 ## Project Structure
 
-```
-.
-├── server.js          # Main application file
-├── package.json       # Project dependencies and scripts
-├── .env.example      # Example environment variables
-├── .gitignore        # Git ignore file
-└── README.md         # Project documentation
 ```
 
 ## Security
@@ -82,4 +87,4 @@ This template includes several security features:
 
 ## License
 
-ISC 
+ISC

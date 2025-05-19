@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const serverless = require('serverless-http');
 const routes = require('./routes');
 
 const app = express();
@@ -24,7 +25,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-}); 
+// Export the serverless handler
+module.exports.handler = serverless(app);
+
+// Only start the server if we're not in a Lambda environment
+if (process.env.AWS_LAMBDA_FUNCTION_NAME === undefined) {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+} 
