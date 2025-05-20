@@ -1,11 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// I want the vapi assistant to receive a message from the server
-// router.get('/server-message', (req, res) => {
-//     res.json({response:"mega giant duck"})
-// })
-
 router.post('/server-message', (req, res) => {
     console.log("server message 1 route version 13:18")
     console.log("req.body:", req.body);
@@ -36,19 +31,8 @@ router.post('/server-message2', (req, res) => {
 
 router.post('/server-message3', (req, res) => {
     console.log("server message 3 route version 14:")
-    // const vapiPayload = req.body.message;
-    // const results = [{
-    //     name: "get_server_message3",
-    //     toolCallId: vapiPayload.toolCallList[0].id,//or vapiPayload.call.id?
-    //     message: [{
-    //         role: "system",
-    //         content: "Say peanuts pokemon"
-    //     }]
-    // }]
     res.json({ result: "watermelon3000" });
 });
-
-
 
 //get email from vapi tool call
 router.post('/print-email', (req, res) => {
